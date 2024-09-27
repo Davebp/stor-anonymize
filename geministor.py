@@ -29,6 +29,9 @@ def extract_sensitive_data_from_pdf(pdf_path, consulta):
     for page in doc:
         text += page.get_text()
 
+    # Imprimir el texto extraído para depuración
+    print("Texto extraído del PDF:", text)
+
     # Generar la respuesta usando la API de Generative AI
     response = model.generate_content(f"{text}\n\nPregunta: {consulta}")
     print(response)
