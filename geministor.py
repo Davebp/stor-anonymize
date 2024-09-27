@@ -30,7 +30,7 @@ def extract_sensitive_data_from_pdf(pdf_path, consulta):
         text += page.get_text()
 
     # Imprimir el texto extraído para depuración
-    print("Texto extraído del PDF:", text)
+    #print("Texto extraído del PDF:", text)
 
     # Generar la respuesta usando la API de Generative AI
     response = model.generate_content(f"{text}\n\nPregunta: {consulta}")
@@ -39,6 +39,7 @@ def extract_sensitive_data_from_pdf(pdf_path, consulta):
     # Procesar la respuesta y extraer los datos relevantes
     sensitive_data = response._result.candidates[0].content.parts[0].text.split(',')
     sensitive_data = [data.strip() for data in sensitive_data]
+    print(sensitive_data)
 
     return sensitive_data
 
